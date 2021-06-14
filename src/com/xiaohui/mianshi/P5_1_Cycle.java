@@ -2,7 +2,9 @@ package com.xiaohui.mianshi;
 
 public class P5_1_Cycle {
 
-    /** 是否有环 */
+    /**
+     * 是否有环
+     */
     public static boolean isCycle(Node head) {
         Node p1 = head;
         Node p2 = head;
@@ -21,7 +23,9 @@ public class P5_1_Cycle {
         return false;
     }
 
-    /** 环的长度 */
+    /**
+     * 环的长度
+     */
     public static int cycleLen(Node head) {
         boolean cycle = false;
         int len = 0;
@@ -48,7 +52,9 @@ public class P5_1_Cycle {
         return len;
     }
 
-    /** 找到环的入口 */
+    /**
+     * 找到环的入口
+     */
     public static Node cycleEnter(Node head) {
         Node p1 = head;
         Node p2 = head;
@@ -67,11 +73,11 @@ public class P5_1_Cycle {
         if (pmeet != null) {
             p1 = head;
             while (p1 != null && pmeet != null) {
+                if (p1 == pmeet) {
+                    return p1;
+                }
                 p1 = p1.next;
                 pmeet = pmeet.next;
-                if (p1 == pmeet) {
-                   return p1;
-                }
             }
         }
         return null;
@@ -81,9 +87,9 @@ public class P5_1_Cycle {
     //      ^        \
     //      |--------\
     public static void main(String[] args) {
-        Node node1 = new Node(5);
+        Node node1 = new Node(5, 1);
         Node node2 = new Node(8);
-        Node node3 = new Node(3);
+        Node node3 = new Node(9,3);
         Node node4 = new Node(7);
         Node node5 = new Node(2);
         Node node6 = new Node(6);
@@ -102,6 +108,7 @@ public class P5_1_Cycle {
     }
 
     private static class Node {
+        int index;
         int data;
         Node next;
 
@@ -109,8 +116,16 @@ public class P5_1_Cycle {
             this.data = data;
         }
 
+        public Node(int data, int index) {
+            this.data = data;
+            this.index = index;
+        }
+
         @Override
         public String toString() {
+            if (index != 0) {
+                return "data=" + data + ",i=" + index;
+            }
             return "data=" + data;
         }
     }
