@@ -67,6 +67,7 @@ public class P5_1_Cycle {
             }
             if (p1 == p2) {
                 pmeet = p1;
+                System.out.println("cycleEnter:pmeet=" + pmeet);
                 break;
             }
         }
@@ -104,7 +105,7 @@ public class P5_1_Cycle {
         int cycleLen = cycleLen(node1);
         System.out.println("cycleLen=" + cycleLen);
         Node cycleMeet = cycleEnter(node1);
-        System.out.println("cycleMeet=" + cycleMeet);
+        System.out.println("cycleEnter=" + cycleMeet);
     }
 
     private static class Node {
