@@ -54,41 +54,84 @@ public class P5_10_BigSum {
     }
 
     public static String bigMumberSum2(String a, String b) {
-        int maxLength = Math.max(a.length(), b.length());
-        System.out.println("bigMumberSum2:maxLength=" + maxLength);
-        int[] arrayA = new int[maxLength + 1];
-        for (int i = 0; i < a.length(); i++) {
-            arrayA[i] = a.charAt(a.length() - 1 - i) - '0';
+        int maxA = a.length();
+        int maxB = b.length();
+        int maxLength = Math.max(maxA, maxB);
+        int num9 = maxLength / 9;
+        if (maxLength % 9 != 0) {
+            num9++;
         }
-        int[] arrayB = new int[maxLength + 1];
-        for (int i = 0; i < b.length(); i++) {
-            arrayB[i] = b.charAt(b.length() - 1 - i) - '0';
-        }
-        int[] result = new int[maxLength + 1];
-        System.out.println("bigMumberSum2:result=" + result.length);
-        for (int i = 0; i < result.length; i++) {
-            int temp = result[i];
-            temp += arrayA[i];
-            temp += arrayB[i];
-            if (temp >= 10) {
-                temp = temp - 10;
-                result[i + 1] = 1;
+        int[] num9A = new int[num9];
+        int[] num9B = new int[num9];
+//        System.out.println("bigMumberSum2:maxLength=" + maxLength + ",num9=" + num9);
+        for (int i = 0; i < num9; i++) {
+            if (a.length() > 9) {
+                String s = a.substring(a.length() - 9);
+                num9A[i] = Integer.parseInt(s);
+                a = a.substring(0, a.length() - 9);
+            } else if (a.length() > 0) {
+                num9A[i] = Integer.parseInt(a);
+                a = "";
+            } else {
+                num9A[i] = 0;
             }
-            result[i] = temp;
+            if (b.length() > 9) {
+                String s = b.substring(b.length() - 9);
+                num9B[i] = Integer.parseInt(s);
+                b = b.substring(0, b.length() - 9);
+            } else if (b.length() > 0) {
+                num9B[i] = Integer.parseInt(b);
+                b = "";
+            } else {
+                num9B[i] = 0;
+            }
         }
+        //打印A
+//        for (int i = num9 - 1; i >= 0; i--) {
+//            int num = num9A[i];
+//            System.out.print(num + ",");
+//        }
+//        System.out.println();
+//        //打印B
+//        for (int i = num9 - 1; i >= 0; i--) {
+//            int num = num9B[i];
+//            System.out.print(num + ",");
+//        }
+//        System.out.println();
+        //add
+        int last = 0;
+        for (int i = 0; i < num9; i++) {
+            int numa = num9A[i];
+            int numb = num9B[i];
+            int sum = numa + numb;
+            if (last == 1) {
+                sum += 1;
+                last = 0;
+            }
+//            System.out.println("sum1=" + sum);
+            if (sum > 999999999) {
+                sum = sum - 999999999 - 1;
+                last = 1;
+            }
+//            System.out.println("sum2=" + sum + ",last=" + last);
+            num9A[i] = sum;
+        }
+        if (last == 1) {
+            num9A[0] += 1;
+        }
+        //打印add A
         StringBuilder sb = new StringBuilder();
-        boolean findFirst = false;
-        for (int i = result.length - 1; i >= 0; i--) {
-            if (!findFirst) {
-                if (result[i] == 0) {
-                    continue;
+        for (int i = num9 - 1; i >= 0; i--) {
+            int num = num9A[i];
+//            System.out.println("bigMumberSum2:num=" + num);
+            if (i != num9 - 1) {
+                int len = ("" + num).length();
+                for (int j = 0; j < 9 - len; j++) {
+                    sb.append("0");
                 }
-                findFirst = true;
             }
-//            System.out.print("" + result[i]);
-            sb.append(result[i]);
+            sb.append(num);
         }
-        System.out.println();
         return sb.toString();
     }
 }
