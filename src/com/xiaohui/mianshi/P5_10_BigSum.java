@@ -65,26 +65,8 @@ public class P5_10_BigSum {
         int[] num9B = new int[num9];
 //        System.out.println("bigMumberSum2:maxLength=" + maxLength + ",num9=" + num9);
         for (int i = 0; i < num9; i++) {
-            if (a.length() > 9) {
-                String s = a.substring(a.length() - 9);
-                num9A[i] = Integer.parseInt(s);
-                a = a.substring(0, a.length() - 9);
-            } else if (a.length() > 0) {
-                num9A[i] = Integer.parseInt(a);
-                a = "";
-            } else {
-                num9A[i] = 0;
-            }
-            if (b.length() > 9) {
-                String s = b.substring(b.length() - 9);
-                num9B[i] = Integer.parseInt(s);
-                b = b.substring(0, b.length() - 9);
-            } else if (b.length() > 0) {
-                num9B[i] = Integer.parseInt(b);
-                b = "";
-            } else {
-                num9B[i] = 0;
-            }
+            a = getString(a, num9A, i);
+            b = getString(b, num9B, i);
         }
         //打印A
 //        for (int i = num9 - 1; i >= 0; i--) {
@@ -133,5 +115,19 @@ public class P5_10_BigSum {
             sb.append(num);
         }
         return sb.toString();
+    }
+
+    private static String getString(String a, int[] num9A, int i) {
+        if (a.length() > 9) {
+            String s = a.substring(a.length() - 9);
+            num9A[i] = Integer.parseInt(s);
+            a = a.substring(0, a.length() - 9);
+        } else if (a.length() > 0) {
+            num9A[i] = Integer.parseInt(a);
+            a = "";
+        } else {
+            num9A[i] = 0;
+        }
+        return a;
     }
 }
