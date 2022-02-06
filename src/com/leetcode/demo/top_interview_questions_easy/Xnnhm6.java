@@ -64,9 +64,6 @@ public class Xnnhm6 {
 		while (node != null) {
 //			System.out.println("reverseList=" + node.val);
 			ListNode next = node.next;
-			if (next == null) {
-				head = node;
-			}
 //			if (pre != null) {
 //				System.out.println("reverseList:pre=" + pre.val);
 //			}

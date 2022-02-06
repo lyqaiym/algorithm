@@ -1,7 +1,5 @@
 package com.leetcode.demo.top_interview_questions_easy;
 
-import com.leetcode.demo.top_interview_questions_easy.Xnnhm6.ListNode;
-
 /**
  * 删除链表中的节点
  * https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/xnarn7/
