@@ -80,7 +80,7 @@ public class Xnnbp2 {
 		ListNode list0 = new ListNode(-1);
 		ListNode cur = list0;
 		while (list1 != null && list2 != null) {
-			System.out.println("mergeTwoLists:cur1=" + list1.val + ",cur2=" + list2.val);
+//			System.out.println("mergeTwoLists:cur1=" + list1.val + ",cur2=" + list2.val);
 			if (list1.val < list2.val) {
 				cur.next = list1;
 				list1 = list1.next;
@@ -88,10 +88,9 @@ public class Xnnbp2 {
 				cur.next = list2;
 				list2 = list2.next;
 			}
-			System.out.println("mergeTwoLists:cur=" + cur.val);
+//			System.out.println("mergeTwoLists:cur=" + cur.val);
 			cur = cur.next;
 		}
-//		System.out.println("mergeTwoLists:cur1=" + cur1 + ",cur2=" + cur2);
 		if (list1 != null) {
 			cur.next = list1;
 		}
